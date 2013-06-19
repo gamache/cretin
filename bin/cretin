@@ -1,0 +1,3 @@
+#!/usr/bin/perl
+use Cretin;
+Cretin->main(@ARGV);

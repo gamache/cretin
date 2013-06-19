@@ -1,0 +1,577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+<meta name="description" content="description"/>
+<meta name="keywords" content="keywords"/> 
+<meta name="author" content="author"/> 
+<link rel="stylesheet" type="text/css" href="default.css" media="screen"/>
+<title>Cretin: Documentation</title>
+</head>
+
+<!-- default margin = default layout -->
+<body style="margin: 0 12%;">
+
+<div class="container">
+
+	<div class="header">
+		<a href="index.html"><span>Cretin: Documentation</span></a>
+	</div>
+
+	<div class="stripes"><span></span></div>
+	
+	<div class="nav">
+		<a href="index.html">News</a>
+		<a href="about.html">About Cretin</a>
+		<a href="docs.html">Documentation</a>
+		<a href="http://sourceforge.net/project/showfiles.php?group_id=205038">Download</a>
+		<a href="http://sf.net/projects/cretin">Project</a>
+		<a href="contact.html">Contact</a>
+		<div class="clearer"><span></span></div>
+	</div>
+
+	<div class="stripes"><span></span></div>
+
+	<div class="main">
+	
+		<div class="left">
+
+			<div class="content">
+
+<h1>Cretin Documentation</h1>
+
+<!-- begin man page -->
+
+
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#supported_tools">SUPPORTED TOOLS</a></li>
+	<li><a href="#modes">MODES</a></li>
+	<li><a href="#options">OPTIONS</a></li>
+	<li><a href="#configuration_variables">CONFIGURATION VARIABLES</a></li>
+	<li><a href="#config_files">CONFIG FILES</a></li>
+	<li><a href="#format_strings">FORMAT STRINGS</a></li>
+	<li><a href="#tips_and_tricks">TIPS AND TRICKS</a></li>
+	<ul>
+
+		<li><a href="#distributed_ripping_and_encoding">Distributed Ripping and Encoding</a></li>
+		<li><a href="#multiprocessing">Multiprocessing</a></li>
+		<li><a href="#delayed_encoding">Delayed Encoding</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright_and_license">COPYRIGHT AND LICENSE</a></li>
+	<li><a href="#bugs_and_known_issues">BUGS AND KNOWN ISSUES</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Cretin - CD Ripper, Encoder and Tagger with an Inoffensive Name</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>cretin [<em>options</em>] [<em>mode</em>]</p>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>Cretin is a high-performance CD reencoder, handling the ripping, encoding and tagging of audio compact discs to multiple file formats. Cretin can operate standalone; however, its power and purpose are unleashed in distributed and multiprocessed environments.  Cretin is highly customizable and supports the use of many encoding and ripping utilities.</p>
+<p>Cretin is a command-line application, for maximum flexibility, portability and purity of design.</p>
+<p>
+</p>
+<hr />
+<h1><a name="supported_tools">SUPPORTED TOOLS</a></h1>
+<dl>
+<dt><strong><a name="item_rippers">Rippers</a></strong>
+
+<dd>
+<pre>
+
+cdp (cdparanoia)</pre>
+</dd>
+<dt><strong><a name="item_encoders">Encoders</a></strong>
+
+<dd>
+<pre>
+
+lame, flac, ogg, faac, shn (shorten)</pre>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="modes">MODES</a></h1>
+<p>Cretin has four modes of operation, between zero and one of which must
+be specified last on the command line:</p>
+<dl>
+<dt><strong><a name="item_rip">rip</a></strong>
+
+<dd>
+<p>Rip a CD, queue it for encoding, and eject the disc.  Repeat.</p>
+</dd>
+</li>
+<dt><strong><a name="item_enc">enc</a></strong>
+
+<dd>
+<p>Encode songs from the queue until the queue is empty.  Exit.</p>
+</dd>
+</li>
+<dt><strong><a name="item_both">both</a></strong>
+
+<dd>
+<p>Rip a cd, queue it for encoding, launch encoder subprocess, eject
+the disc.  Repeat.  This is the default mode of operation.</p>
+</dd>
+</li>
+<dt><strong><a name="item_nop">nop</a></strong>
+
+<dd>
+<p>No operation.  Do nothing and exit.  This mode is mostly useful
+in conjunction with the ``-recover'' option.</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="options">OPTIONS</a></h1>
+<p>Here is a summary of the options the ``cretin'' command accepts:</p>
+<dl>
+<dt><strong><a name="item__2dh_2c__2dhelp_2c__2d_2dhelp_2c__2d_2d_2dheeellll">-h, -help, --help, ---HEEELLLLLP and anything else matching /-h/i</a></strong>
+
+<dd>
+<p>Print a short help message and exit.</p>
+</dd>
+</li>
+<dt><strong><a name="item__2dc_cfg_2evar_value">-c <em>cfg.var</em> <em>value</em></a></strong>
+
+<dd>
+<p>Set configuration variable <em>cfg.var</em> to <em>value</em>.  May be specified multiple times.</p>
+</dd>
+</li>
+<dt><strong><a name="item__2df_cfgfile">-f <em>cfgfile</em></a></strong>
+
+<dd>
+<p>Read config file <em>cfgfile</em>.  May be specified multiple times.</p>
+</dd>
+</li>
+<dt><strong><a name="item__2drecover">-recover</a></strong>
+
+<dd>
+<p>Recover from a crashed or interrupted session.  This option will
+requeue songs which did not finish encoding.  A warning: do not use
+this option when there are running encoders.  There will be no
+lasting damage, but unnecessary computation will be performed.</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="configuration_variables">CONFIGURATION VARIABLES</a></h1>
+<p>Config variables enable heavy customization of Cretin's operation.
+Here is a list of variables which may be set by the user:</p>
+<dl>
+<dt><strong><a name="item_cfg_2erootdir">cfg.rootdir</a></strong>
+
+<dd>
+<p>Root directory, under which all Cretin operations take place.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2eencq">cfg.encq</a></strong>
+
+<dd>
+<p>Filename, within cfg.rootdir, of encoding queue.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2eenclog">cfg.enclog</a></strong>
+
+<dd>
+<p>Filename, within cfg.rootdir, of in-process encoding log.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2eripdir">cfg.ripdir</a></strong>
+
+<dd>
+<p>Directory, within cfg.rootdir, under which all ripping operations
+take place.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2eencdir">cfg.encdir</a></strong>
+
+<dd>
+<p>Directory, within cfg.rootdir, under which all encoding operations
+take place.</p>
+</dd>
+</li>
+<dt><strong>cfg.ripdir</strong>
+
+<dd>
+<p>Directory, within cfg.rootdir, under which all ripping operations
+take place.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2erip">cfg.rip</a></strong>
+
+<dd>
+<p>Selected ripper.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2eenc">cfg.enc</a></strong>
+
+<dd>
+<p>Comma-separated list of selected encoders.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2emaxenc">cfg.maxenc</a></strong>
+
+<dd>
+<p>Number of encoding processes to spawn at once.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2edirfmt">cfg.dirfmt</a></strong>
+
+<dd>
+<p>Format string for artist and album directory names.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2efilefmt">cfg.filefmt</a></strong>
+
+<dd>
+<p>Format string for song filenames.</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2eejectcmd">cfg.ejectcmd</a></strong>
+
+<dd>
+<p>Command to eject a CD.  Defaults to the empty string (no ejection).</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2erepeat">cfg.repeat</a></strong>
+
+<dd>
+<p>Set to 1 to start ripping next disc immediately after a disc finishes, without
+pressing Return.  Note: make sure you have specified a valid ejectcmd above!</p>
+</dd>
+</li>
+<dt><strong><a name="item_cfg_2ekeep_encoder_running">cfg.keep_encoder_running</a></strong>
+
+<dd>
+<p>Set to 1 to prevent the encoder engine from exiting when the encoding queue
+is empty</p>
+</dd>
+</li>
+<dt><strong><a name="item_rips_2exxx_2ecmd_2c_encs_2exxx_2ecmd">rips.<em>XXX</em>.cmd, encs.<em>XXX</em>.cmd</a></strong>
+
+<dd>
+<p>Command path for ripper or encoder <em>XXX</em>.</p>
+</dd>
+</li>
+<dt><strong><a name="item_rips_2exxx_2eflags_2c_encs_2exxx_2eflags">rips.<em>XXX</em>.flags, encs.<em>XXX</em>.flags</a></strong>
+
+<dd>
+<p>Command flags for ripper or encoder <em>XXX</em>.</p>
+</dd>
+</li>
+<dt><strong><a name="item_rips_2exxx_2edir_2c_encs_2exxx_2edir">rips.<em>XXX</em>.dir, encs.<em>XXX</em>.dir</a></strong>
+
+<dd>
+<p>Directory, within cfg.ripdir or cfg.encdir, under which all opera-
+tions for ripper or encoder <em>XXX</em> take place.</p>
+</dd>
+</li>
+<dt><strong><a name="item_rips_2exxx_2eext_2c_encs_2exxx_2eext">rips.<em>XXX</em>.ext, encs.<em>XXX</em>.ext</a></strong>
+
+<dd>
+<p>Filename extension for ripper or encoder <em>XXX</em>.</p>
+</dd>
+</li>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="config_files">CONFIG FILES</a></h1>
+<p>By default, Cretin reads <em>/etc/cretinrc</em> and <em>~/.cretinrc</em> as config files
+at startup.  Other config files may be specified by the -f option.</p>
+<p>Config files must adhere to the following syntax:</p>
+<ul>
+<li>
+<p>Lines consisting only of whitespace and lines beginning with # are
+ignored.</p>
+</li>
+<li>
+<p>All other lines begin with the name of the config variable.</p>
+</li>
+<li>
+<p>If the variable is being set to a non-empty value, the variable
+name is followed by one or more tab characters, followed by the
+value.  Quoting or backslashing is unnecessary.</p>
+<p>If the variable is being set to an empty value, the line may end
+after the variable name.
+
+</p>
+</li>
+</ul>
+<p>
+</p>
+<hr />
+<h1><a name="format_strings">FORMAT STRINGS</a></h1>
+<p>Naming of directories and files may be controlled by customizing
+Cretin's format strings, config variables ``cfg.dirfmt'' and
+``cfg.filefmt''.  Format strings are string containing tokens which obey
+the following grammar:
+
+</p>
+<ul>
+<li>
+<p>All tokens begin with a % character.
+
+</p>
+</li>
+<li>
+<p>The next character in the token is one of the following letters:
+
+</p>
+<dl>
+<dt><strong><a name="item_a_2c_a">a, A</a></strong>
+
+<dd>
+<p>Artist name.
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_l_2c_l">l, L</a></strong>
+
+<dd>
+<p>Album name.
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_t_2c_t">t, T</a></strong>
+
+<dd>
+<p>Track name.
+
+</p>
+</dd>
+</li>
+<dt><strong><a name="item_n_2c_n">n, N</a></strong>
+
+<dd>
+<p>Track number.
+
+</p>
+</dd>
+</li>
+</dl>
+<p>The case of the letter is significant; a lowercase letter will
+force items into lowercase, while an uppercase letter will leave
+capitalization untouched.
+
+</p>
+<li>
+<p>Optionally, the character _ may be specified next.  This will
+replace space characters with underscores.
+
+</p>
+</li>
+<li>
+<p>Optionally, a length of the form [<em>nn</em>] may be specified last.  In
+the case of letters A, L and T, the length will be enforced as a
+maximum; in the case of N, the length will be enforced as a minimum.
+
+</p>
+<p>Cretin's default cfg.dirfmt is ``%A[64]/%L[64]'', and cfg.filefmt
+defaults to ``%n[2]&nbsp;%T[64]''.
+
+</p>
+</li>
+</ul>
+<p>
+</p>
+<hr />
+<h1><a name="tips_and_tricks">TIPS AND TRICKS</a></h1>
+<p>
+</p>
+<h2><a name="distributed_ripping_and_encoding">Distributed Ripping and Encoding</a></h2>
+<p>Using the networked filesystem of your choice (NFS, AFP, SMB, etc.),
+share a directory among all desired computers.  Set cfg.rootdir on each
+computer to point to the directory (or a subdirectory).  Ensure that
+all directory-related variables among machines are set in unison.  You
+may now rip and encode on multiple computers.
+
+</p>
+<p>
+</p>
+<h2><a name="multiprocessing">Multiprocessing</a></h2>
+<p>On each machine, set the cfg.maxenc variable equal to (or just higher
+than) the number of CPU cores you'd like to keep busy.
+
+</p>
+<p>
+</p>
+<h2><a name="delayed_encoding">Delayed Encoding</a></h2>
+<p>Run ``cretin rip'' first, then don't run ``cretin enc'' until you are
+ready.
+
+</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Pete Gamache, gamache!@#$%gmail.com.
+
+</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright_and_license">COPYRIGHT AND LICENSE</a></h1>
+<p>Cretin is copyright 2007, Pete Gamache.
+
+</p>
+<p>Cretin is released under the Perl Artistic License, whose text is
+available at: <a href="http://dev.perl.org/licenses/artistic.html">http://dev.perl.org/licenses/artistic.html</a>.
+
+</p>
+<p>
+</p>
+<hr />
+<h1><a name="bugs_and_known_issues">BUGS AND KNOWN ISSUES</a></h1>
+<p>FreeDB lookup may be incorrect if there are multiple records returned
+from the database.
+</p>
+
+
+<!-- end man page -->
+
+
+
+
+
+
+				
+				
+			</div>
+
+		</div>
+
+		<div class="right">
+
+			<div class="subnav">
+
+				<h1>Cretin</h1>
+				<p>Is the CD Ripper, Encoder, and Tagger with an Inoffensive Name.</p>
+
+
+				<h1>Supported Rippers</h1>
+				<ul>
+					<li><a href="http://xiph.org/paranoia/">cdparanoia</a></li>
+				</ul>
+
+
+				<h1>Supported Encoders</h1>
+				<ul>
+					<li><a href="http://lame.sf.net">lame (mp3)</a></li>
+					<li><a href="http://xiph.org/vorbis">Ogg Vorbis (ogg)</a></li>
+					<li><a href="http://sourceforge.net/projects/faac/">faac (m4a)</a></li>
+					<li><a href="http://flac.sf.net">flac (lossless)</a></li>
+					<li><a href="http://www.etree.org/shncom.html">shorten (lossless)</a></li>
+
+				</ul>
+
+				<br>
+				<p><a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=205038&amp;type=3" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
+
+<!--
+				<h1>Blandit Enim</h1>
+				<ul>
+					<li><a href="index.html">consequat molestie</a></li>
+					<li><a href="index.html">sem justo</a></li>
+					<li><a href="index.html">semper</a></li>
+					<li><a href="index.html">magna sed purus</a></li>
+				</ul>
+
+				<h1>Fringilla</h1>
+				<ul>
+					<li><a href="index.html">sociis natoque</a></li>
+					<li><a href="index.html">magna sed purus</a></li>
+					<li><a href="index.html">tincidunt</a></li>
+				</ul>
+-->
+			</div>
+
+		</div>
+
+		<div class="clearer"><span></span></div>
+
+	</div>
+
+	<div class="footer">
+<!--
+	
+			<div class="col3">
+
+				<h2>Tincidunt</h2>
+				<ul>
+					<li><a href="index.html">consequat molestie</a></li>
+					<li><a href="index.html">sem justo</a></li>
+					<li><a href="index.html">semper</a></li>
+					<li><a href="index.html">magna sed purus</a></li>
+					<li><a href="index.html">tincidunt</a></li>
+				</ul>
+
+			</div>
+
+			<div class="col3center">
+				<h2>Sed purus</h2>
+				<ul>
+					<li><a href="index.html">consequat molestie</a></li>
+					<li><a href="index.html">sem justo</a></li>
+					<li><a href="index.html">semper</a></li>
+					<li><a href="index.html">magna sed purus</a></li>
+					<li><a href="index.html">tincidunt</a></li>
+				</ul>
+			</div>
+
+			<div class="col3">
+				<h2>Praesent</h2>
+				<ul>
+					<li><a href="index.html">consequat molestie</a></li>
+					<li><a href="index.html">sem justo</a></li>
+					<li><a href="index.html">semper</a></li>
+					<li><a href="index.html">magna sed purus</a></li>
+					<li><a href="index.html">tincidunt</a></li>
+				</ul>
+			</div>
+-->
+			<div class="bottom">
+				
+				<span class="left">&copy; 2007 <a href="index.html">Pete Gamache</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer">XHTML</a>.</span>
+				<span class="right">Template design by <a href="http://templates.arcsin.se">Arcsin</a></span>
+
+				<div class="clearer"><span></span></div>
+
+			</div>
+
+	</div>
+
+</div>
+
+</body>
+
+</html>

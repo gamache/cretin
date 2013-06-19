@@ -1,0 +1,18 @@
+MANIFEST
+README
+Makefile.PL
+lib/Cretin.pm
+lib/Cretin/Song.pm
+bin/cretin
+www/about.html
+www/contact.html
+www/default.css
+www/docs.html
+www/img/bg.jpg
+www/img/bgh1.gif
+www/img/li.gif
+www/img/nav.gif
+www/img/nav_hover.gif
+www/img/stripe.gif
+www/index.html
+META.yml                                 Module meta-data (added by MakeMaker)

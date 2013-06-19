@@ -1,0 +1,36 @@
+Cretin 0.5
+copyright 2007   pete gamache  gamache@#$!@gmail.com
+
+
+REQUIREMENTS
+
+Cretin is a pure Perl application and should run in any reasonable POSIX
+environment.  This includes but is not limited to Mac OS X, Unix, Linux, 
+and Cygwin.
+
+Cretin requires CDDB.pm to perform FreeDB searches.  CDDB may be installed
+by using the following command:
+
+  sudo perl -MCPAN -e'install CDDB'
+
+
+INSTALLATION
+
+To install Cretin system-wide, use the following commands:
+
+  perl Makefile.PL
+  make
+  sudo make install
+
+
+USAGE
+
+The 'cretin' command is the front-end command to the Cretin utility.  You may
+execute 'cretin -h' for a short explanation of Cretin's usage.  For more
+detailed information, type 'man cretin'.
+
+
+FOR MORE INFORMATION
+
+Visit the Cretin website at http://cretin.sf.net/.
+
